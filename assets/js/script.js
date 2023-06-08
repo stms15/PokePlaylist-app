@@ -88,14 +88,37 @@ async function searchSpotify(query) {
 // searchSpotify("water+mad");
 // console.log(JSON.parse(localStorage.getItem("playlist")));
 
+
+/*        ------ PokeAPI Search ------        */
+
 var containerEl = document.createElement("div");
 containerEl.id = "container";
-document.body.appendChild(containerEl);
+//document.body.appendChild(containerEl);
 
 var titleEl = document.createElement("h2");
 titleEl.id = "pokemon-name";
-containerEl.appendChild(titleEl);
+//containerEl.appendChild(titleEl);
 
 var dataEl = document.createElement("div");
 dataEl.id = "pokemon-data";
-containerEl.appendChild(dataEl);
+//containerEl.appendChild(dataEl);
+
+var searchFormEl = document.createElement("form");
+var searchLabelEl = document.createElement("label");
+var searchInputEl = document.createElement("input");
+var searchButtonEl = document.createElement("button");
+searchFormEl.id = "search-form";
+searchLabelEl.id = "search-label";
+searchLabelEl.textContent = "PokeAPI Search";
+searchInputEl.id = "search-input";
+searchButtonEl.id = "search-button";
+searchButtonEl.textContent = "Search";
+
+searchFormEl.appendChild(searchLabelEl);
+searchFormEl.appendChild(searchInputEl);
+searchFormEl.appendChild(searchButtonEl);
+document.body.appendChild(searchFormEl);
+
+searchButtonEl.addEventListener("click", function(event) {
+  event.preventDefault();
+})
