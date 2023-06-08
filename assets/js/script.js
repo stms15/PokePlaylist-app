@@ -87,3 +87,15 @@ async function searchSpotify(query) {
 // console.log(JSON.parse(localStorage.getItem("temporarySpotifyAccessToken")));
 // searchSpotify("water+mad");
 // console.log(JSON.parse(localStorage.getItem("playlist")));
+
+var containerEl = document.createElement("div");
+containerEl.id = "container";
+document.body.appendChild(containerEl);
+
+var titleEl = document.createElement("h2");
+titleEl.id = "pokemon-name";
+containerEl.appendChild(titleEl);
+
+var dataEl = document.createElement("div");
+dataEl.id = "pokemon-data";
+containerEl.appendChild(dataEl);
