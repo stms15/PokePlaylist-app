@@ -121,4 +121,33 @@ document.body.appendChild(searchFormEl);
 
 searchButtonEl.addEventListener("click", function(event) {
   event.preventDefault();
+  
+  var searchUrl = "https://pokeapi.co/api/v2/pokemon/" + searchInputEl.value;
+  console.log(searchUrl);
+  getPokemonDetails(searchUrl);
 })
+
+function getPokemonDetails(searchUrl) {
+  fetch (searchUrl)
+    .then (function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          if (data) {
+            console.log(data);
+          }
+          else {
+            console.log("No data");
+          }
+        })
+      }
+      else if (response.status === 404) {
+        console.log("No data");
+      }
+      else {
+        console.log("Error: " + response.statusText);
+      }
+    })
+    .catch(function (error) {
+      console.log("Could not connect to PokeAPI.");
+    })
+}
