@@ -93,7 +93,7 @@ async function searchSpotify(query) {
 
 var containerEl = document.createElement("div");
 containerEl.id = "container";
-//document.body.appendChild(containerEl);
+document.body.appendChild(containerEl);
 
 var titleEl = document.createElement("h2");
 titleEl.id = "pokemon-name";
@@ -117,7 +117,9 @@ searchButtonEl.textContent = "Search";
 searchFormEl.appendChild(searchLabelEl);
 searchFormEl.appendChild(searchInputEl);
 searchFormEl.appendChild(searchButtonEl);
-document.body.appendChild(searchFormEl);
+containerEl.appendChild(searchFormEl);
+containerEl.appendChild(titleEl);
+containerEl.appendChild(dataEl);
 
 searchButtonEl.addEventListener("click", function(event) {
   event.preventDefault();
@@ -132,16 +134,12 @@ function getPokemonDetails(searchUrl) {
     .then (function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          if (data) {
-            console.log(data);
-          }
-          else {
-            console.log("No data");
-          }
+            readData(data);
         })
       }
       else if (response.status === 404) {
-        console.log("No data");
+        titleEl.textContent = `"${searchInputEl.value}"`;
+        dataEl.textContent = "No results found.";
       }
       else {
         console.log("Error: " + response.statusText);
@@ -150,4 +148,23 @@ function getPokemonDetails(searchUrl) {
     .catch(function (error) {
       console.log("Could not connect to PokeAPI.");
     })
+}
+
+function readData(data) {
+  if (!data || data.length === 0) {
+    titleEl.textContent = `"${searchInputEl.value}"`;
+    dataEl.textContent = "No results found.";
+    return;
+  }
+  console.log(data);
+  var pokemonName = data.name;
+  var pokemonTypes = data.types;
+  var pokemonTypeConcat = pokemonTypes[0].type.name;
+  console.log(pokemonTypes);
+  if (pokemonTypes.length === 2) {
+    pokemonTypeConcat += "/" + pokemonTypes[1].type.name;
+  }
+  console.log(pokemonTypeConcat);
+  titleEl.textContent = pokemonName;
+  dataEl.textContent = `Type: ${pokemonTypeConcat}`;
 }
