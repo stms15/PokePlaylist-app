@@ -89,24 +89,26 @@ async function searchSpotify(query) {
 // console.log(JSON.parse(localStorage.getItem("playlist")));
 
 
+/**********************************************/
 /*        ------ PokeAPI Search ------        */
+/**********************************************/
 
+// Create HTML elements
 var containerEl = document.createElement("div");
 containerEl.id = "container";
 document.body.appendChild(containerEl);
 
 var titleEl = document.createElement("h2");
 titleEl.id = "pokemon-name";
-//containerEl.appendChild(titleEl);
 
 var dataEl = document.createElement("div");
 dataEl.id = "pokemon-data";
-//containerEl.appendChild(dataEl);
 
 var searchFormEl = document.createElement("form");
 var searchLabelEl = document.createElement("label");
 var searchInputEl = document.createElement("input");
 var searchButtonEl = document.createElement("button");
+
 searchFormEl.id = "search-form";
 searchLabelEl.id = "search-label";
 searchLabelEl.textContent = "PokeAPI Search";
@@ -121,6 +123,7 @@ containerEl.appendChild(searchFormEl);
 containerEl.appendChild(titleEl);
 containerEl.appendChild(dataEl);
 
+// Search function
 searchButtonEl.addEventListener("click", function(event) {
   event.preventDefault();
   
@@ -129,6 +132,7 @@ searchButtonEl.addEventListener("click", function(event) {
   getPokemonDetails(searchUrl);
 })
 
+// Fetch data from URL
 function getPokemonDetails(searchUrl) {
   fetch (searchUrl)
     .then (function (response) {
@@ -150,6 +154,7 @@ function getPokemonDetails(searchUrl) {
     })
 }
 
+// Display data in HTML
 function readData(data) {
   if (!data || data.length === 0) {
     titleEl.textContent = `"${searchInputEl.value}"`;
