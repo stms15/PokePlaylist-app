@@ -1,0 +1,46 @@
+:root {
+  --accent: ; /* define colours? */
+}
+
+@font-face {
+  font-family: pokemon-solid;
+  src: url(../fonts/Pokemon-Solid.ttf);
+}
+@font-face {
+  font-family: pokemon-hollow;
+  src: url(../fonts/Pokemon-Hollow.ttf);
+}
+
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; /* ? */
+}
+
+/* --- Header classes --- */
+
+h1 {
+  font-family: pokemon-solid;
+  font-size: 350%;
+}
+
+.header-emphasis {
+  font-family: pokemon-solid;
+  color: #f2ba00;
+  text-shadow: 4px 4px black;
+}
+
+#description {
+  font-size: 110%;
+}
+
+/* ---------------------- */
+
+/* --- Screen size specifications --- */
+
+@media screen and (max-width: 780px) {
+  #description {
+    width: 100% !important;
+  }
+}
+
+/* ---------------------------------- */
