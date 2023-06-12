@@ -42,6 +42,98 @@
         Have fun! And choose wisely...
       </p>
     </header>
+
+    <!-- Container for cards -->
+    <div
+      class="container-xl d-flex flex-wrap justify-content-around"
+      id="card-container"
+    >
+      <!-- Test card 1: Charmeleon -->
+      <div
+        class="card pokemon-card m-3 shadow-lg"
+        id="test-card"
+        style="background-color: var(--lightfire)"
+      >
+        <div class="image-container">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png"
+            alt="image of pokemon"
+            class="pokemon-image mt-2 mb-2"
+          />
+        </div>
+        <div class="card-body text-center">
+          <div class="d-flex justify-content-between">
+            <h5>Charmeleon</h5>
+            <img
+              src="./assets/imgs/Fire.png"
+              class="type-image"
+              alt="fire symbol"
+            />
+          </div>
+          <ul class="w-75">
+            <li class="d-flex justify-content-between"><span>HP:</span> 58</li>
+            <li class="d-flex justify-content-between">
+              <span>Defense:</span> 58
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Attack:</span> 64
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Sp Defense:</span> 65
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Sp Attack:</span> 80
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Test card 2: Gengar -->
+      <div
+        class="card pokemon-card m-3 shadow-lg"
+        id="test-card"
+        style="background-color: var(--lightghost)"
+      >
+        <div class="image-container">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+            alt="image of pokemon"
+            class="pokemon-image mt-2 mb-2"
+          />
+        </div>
+        <div class="card-body text-center">
+          <div class="d-flex justify-content-space justify-content-between">
+            <h5>Gengar</h5>
+            <span
+              ><img
+                src="./assets/imgs/Ghost.png"
+                class="type-image"
+                alt="ghost type symbol"
+              />
+              <img
+                src="./assets/imgs/Poison.png"
+                class="type-image"
+                alt="poison type symbol"
+              />
+            </span>
+          </div>
+          <ul class="w-75">
+            <li class="d-flex justify-content-between"><span>HP:</span> 60</li>
+            <li class="d-flex justify-content-between">
+              <span>Defense:</span> 60
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Attack:</span> 65
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Sp Defense:</span> 75
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Sp Attack:</span> 130
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="./assets/js/script.js"></script>
 </html>

@@ -81,9 +81,31 @@ async function searchSpotify(query) {
 
 // ----------------------- //
 
-// Uncomment to test:
-
-// getSpotifyAccessTokens();
-// console.log(JSON.parse(localStorage.getItem("temporarySpotifyAccessToken")));
-// searchSpotify("water+mad");
-// console.log(JSON.parse(localStorage.getItem("playlist")));
+// Notes about the the style of the Pokemon cards:
+//
+// 1. The outer parent container's id is "card-container"
+// 2. The classes needed for each new card are:
+//       a) card
+//       b) pokemon-card
+//       c) m-3
+//       d) shadow-lg
+// 3. Each card has a <div class="image-container"> with the <img>
+//    of the pokemon inside of it
+// 4. Main images have classes:
+//       a) pokemon-image
+//       b) mt-2
+//       c) mb-2
+// 5. After the img div, there is a <div class="text-body text-center">
+//    for all of the card text
+// 6. Then there is a <div class="d-flex justify-content-between"> with
+//    child elements
+//       a) <h5>Name of Pokemon</5>
+//       b) <img src=type images> (pngs for these are in the imgs
+//           folder and are named by type, i.e "Fire.png")
+// 7. After that div, but still a child of the "text-body" div, there
+//    is a list with class "w-75"
+// 8. There are 5 stats in the list
+// 9. List elements have classes
+//       a) d-flex
+//       b) justify-content-between
+//    and one of stat name or stat value has to be inside a <span> element.
