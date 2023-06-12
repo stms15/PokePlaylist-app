@@ -107,14 +107,15 @@ dataEl.id = "pokemon-data";
 var searchFormEl = document.createElement("form");
 var searchLabelEl = document.createElement("label");
 var searchInputEl = document.createElement("input");
-var searchButtonEl = document.createElement("button");
+var searchButtonEl = document.createElement("input");
 
 searchFormEl.id = "search-form";
 searchLabelEl.id = "search-label";
 searchLabelEl.textContent = "PokeAPI Search";
+searchLabelEl.for = "search-input";
 searchInputEl.id = "search-input";
 searchButtonEl.id = "search-button";
-searchButtonEl.textContent = "Search";
+searchButtonEl.type = "submit";
 
 searchFormEl.appendChild(searchLabelEl);
 searchFormEl.appendChild(searchInputEl);
@@ -124,11 +125,10 @@ containerEl.appendChild(titleEl);
 containerEl.appendChild(dataEl);
 
 // Search function
-searchButtonEl.addEventListener("click", function(event) {
+searchFormEl.addEventListener("submit", function(event) {
   event.preventDefault();
   
-  var searchUrl = "https://pokeapi.co/api/v2/pokemon/" + searchInputEl.value;
-  console.log(searchUrl);
+  var searchUrl = "https://pokeapi.co/api/v2/pokemon/" + searchInputEl.value.trim();
   getPokemonDetails(searchUrl);
 })
 
@@ -162,7 +162,7 @@ function readData(data) {
     return;
   }
   console.log(data);
-  var pokemonName = data.name;
+  var pokemonName = capitalizeFirstLetter(data.name);
   var pokemonTypes = data.types;
   var pokemonTypeConcat = pokemonTypes[0].type.name;
   console.log(pokemonTypes);
@@ -173,3 +173,21 @@ function readData(data) {
   titleEl.textContent = pokemonName;
   dataEl.textContent = `Type: ${pokemonTypeConcat}`;
 }
+
+// Source: https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getStarters() {
+  var searchUrl = "https://pokeapi.co/api/v2/pokemon/bulbasaur";
+  getPokemonDetails(searchUrl);
+
+  searchUrl = "https://pokeapi.co/api/v2/pokemon/charmander";
+  getPokemonDetails(searchUrl);
+
+  searchUrl = "https://pokeapi.co/api/v2/pokemon/squirtle";
+  getPokemonDetails(searchUrl);
+}
+
+getStarters();
