@@ -164,14 +164,26 @@ function readData(data) {
   console.log(data);
   var pokemonName = capitalizeFirstLetter(data.name);
   var pokemonTypes = data.types;
-  var pokemonTypeConcat = pokemonTypes[0].type.name;
-  console.log(pokemonTypes);
+  var pokemonTypeConcat = capitalizeFirstLetter(pokemonTypes[0].type.name);
+  var pokemonStats = data.stats;
+  var pokemonImageEl = document.createElement("img");
+  pokemonImageEl.src = data.sprites.front_default;
+
   if (pokemonTypes.length === 2) {
-    pokemonTypeConcat += "/" + pokemonTypes[1].type.name;
+    pokemonTypeConcat += "/" + capitalizeFirstLetter(pokemonTypes[1].type.name);
   }
-  console.log(pokemonTypeConcat);
+
   titleEl.textContent = pokemonName;
   dataEl.textContent = `Type: ${pokemonTypeConcat}`;
+
+  for (var i = 0; i < pokemonStats.length; i++) {
+    console.log(pokemonStats);
+    var currentStat = document.createElement("div");
+    currentStat.textContent = pokemonStats[i].stat.name + ": " + pokemonStats[i].base_stat;
+    dataEl.appendChild(currentStat);
+  }
+
+  dataEl.appendChild(pokemonImageEl);
 }
 
 // Source: https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
@@ -189,5 +201,3 @@ function getStarters() {
   searchUrl = "https://pokeapi.co/api/v2/pokemon/squirtle";
   getPokemonDetails(searchUrl);
 }
-
-getStarters();
