@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PokePlaylist</title>
+    <title>Pok&eacute;Playlist</title>
+    <!-- Add Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <!-- Add Day.js script -->
     <script
       src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
@@ -12,6 +20,120 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body></body>
+  <body>
+    <header
+      class="d-flex flex-column align-items-center justify-content-center m-5"
+    >
+      <h1 class="mb-5">
+        Pok&eacute;<span class="header-emphasis">Playlist</span>
+      </h1>
+      <p class="w-75" style="text-align: center" id="description">
+        Welcome to Pok&eacute;Playlist &mdash; the site that turns your dream
+        Pok&eacute;mon team into a reccommended playlist! <br />
+        <br />
+        To get started, you can search for Pok&eacute;mon in the first
+        generation by name or filter by type. If you want to add a
+        Pok&eacute;mon to your team, just drag and drop into
+        <strong>Your Team</strong> in the sidebar. When you're happy with the 6
+        you've selected, click <strong>Generate Playlist</strong> to see the
+        reccommended songs based on your selection. Your team will be saved for
+        future reference, but you can start over anytime. <br />
+        <br />
+        Have fun! And choose wisely...
+      </p>
+    </header>
+
+    <!-- Container for cards -->
+    <div
+      class="container-xl d-flex flex-wrap justify-content-around"
+      id="card-container"
+    >
+      <!-- Test card 1: Charmeleon -->
+      <div
+        class="card pokemon-card m-3 shadow-lg"
+        id="test-card"
+        style="background-color: var(--lightfire)"
+      >
+        <div class="image-container">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png"
+            alt="image of pokemon"
+            class="pokemon-image mt-2 mb-2"
+          />
+        </div>
+        <div class="card-body text-center">
+          <div class="d-flex justify-content-between">
+            <h5>Charmeleon</h5>
+            <img
+              src="./assets/imgs/Fire.png"
+              class="type-image"
+              alt="fire symbol"
+            />
+          </div>
+          <ul class="w-75">
+            <li class="d-flex justify-content-between"><span>HP:</span> 58</li>
+            <li class="d-flex justify-content-between">
+              <span>Defense:</span> 58
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Attack:</span> 64
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Sp Defense:</span> 65
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Sp Attack:</span> 80
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Test card 2: Gengar -->
+      <div
+        class="card pokemon-card m-3 shadow-lg"
+        id="test-card"
+        style="background-color: var(--lightghost)"
+      >
+        <div class="image-container">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+            alt="image of pokemon"
+            class="pokemon-image mt-2 mb-2"
+          />
+        </div>
+        <div class="card-body text-center">
+          <div class="d-flex justify-content-space justify-content-between">
+            <h5>Gengar</h5>
+            <span
+              ><img
+                src="./assets/imgs/Ghost.png"
+                class="type-image"
+                alt="ghost type symbol"
+              />
+              <img
+                src="./assets/imgs/Poison.png"
+                class="type-image"
+                alt="poison type symbol"
+              />
+            </span>
+          </div>
+          <ul class="w-75">
+            <li class="d-flex justify-content-between"><span>HP:</span> 60</li>
+            <li class="d-flex justify-content-between">
+              <span>Defense:</span> 60
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Attack:</span> 65
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Sp Defense:</span> 75
+            </li>
+            <li class="d-flex justify-content-between">
+              <span>Sp Attack:</span> 130
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
   <script src="./assets/js/script.js"></script>
 </html>
