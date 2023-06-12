@@ -161,7 +161,7 @@ function readData(data) {
     dataEl.textContent = "No results found.";
     return;
   }
-  console.log(data);
+  
   var pokemonName = capitalizeFirstLetter(data.name);
   var pokemonTypes = data.types;
   var pokemonTypeConcat = capitalizeFirstLetter(pokemonTypes[0].type.name);
@@ -177,7 +177,6 @@ function readData(data) {
   dataEl.textContent = `Type: ${pokemonTypeConcat}`;
 
   for (var i = 0; i < pokemonStats.length; i++) {
-    console.log(pokemonStats);
     var currentStat = document.createElement("div");
     currentStat.textContent = pokemonStats[i].stat.name + ": " + pokemonStats[i].base_stat;
     dataEl.appendChild(currentStat);
