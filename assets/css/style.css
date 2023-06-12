@@ -1,24 +1,22 @@
 :root {
-  --fire: #dc6a00;
-  --lightfire: #f0c695;
-  --water: #1d90c1;
-  --grass: #117b08;
-  --ice: #0bc1ac;
-  --normal: #616060;
-  --electric: #f1cb00;
-  --fighting: #b8140a;
-  --poison: #6b08a7;
-  --ground: #825513;
-  --flying: #769ebb;
-  --psychic: #e34e57;
-  --bug: #7c9407;
-  --rock: #85725c;
-  --ghost: #3d2e98;
-  --lightghost: #c9cef5;
-  --dark: #303134;
-  --dragon: #1d53dd;
-  --steel: #326879;
-  --fairy: #d86fcf;
+  --fire: #f0c695;
+  --water: #b9e7f5;
+  --grass: #afdba0;
+  --ice: #ddf9f9;
+  --normal: #d2d2d2;
+  --electric: #fbf5d5;
+  --fighting: #ebb9b6;
+  --poison: #d3b9e3;
+  --ground: #ddc7a6;
+  --flying: #e5f1fa;
+  --psychic: #fcd1db;
+  --bug: #e7e5b7;
+  --rock: #dfd2bf;
+  --ghost: #c9cef5;
+  --dark: #b3b3b3;
+  --dragon: #bbceeb;
+  --steel: #d3e2e7;
+  --fairy: #f0d6ee;
 }
 
 @font-face {
