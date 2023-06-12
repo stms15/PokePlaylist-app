@@ -1,5 +1,24 @@
 :root {
-  --accent: ; /* define colours? */
+  --fire: #dc6a00;
+  --lightfire: #f0c695;
+  --water: #1d90c1;
+  --grass: #117b08;
+  --ice: #0bc1ac;
+  --normal: #616060;
+  --electric: #f1cb00;
+  --fighting: #b8140a;
+  --poison: #6b08a7;
+  --ground: #825513;
+  --flying: #769ebb;
+  --psychic: #e34e57;
+  --bug: #7c9407;
+  --rock: #85725c;
+  --ghost: #3d2e98;
+  --lightghost: #c9cef5;
+  --dark: #303134;
+  --dragon: #1d53dd;
+  --steel: #326879;
+  --fairy: #d86fcf;
 }
 
 @font-face {
@@ -23,6 +42,10 @@ h1 {
   font-size: 350%;
 }
 
+h5 {
+  font-size: 140%;
+}
+
 .header-emphasis {
   font-family: pokemon-solid;
   color: #f2ba00;
@@ -34,6 +57,50 @@ h1 {
 }
 
 /* ---------------------- */
+
+/* ----- Card classes ----- */
+
+.pokemon-card {
+  width: 250px;
+  height: 350px;
+  border: solid 10px rgb(225, 207, 91);
+  border-radius: 8px;
+  background-color: rgb(252, 235, 213);
+  transition: all 0.5s;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.06);
+}
+
+.pokemon-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.image-container {
+  width: 180px;
+  border: solid 1px gray;
+  border-radius: 4px;
+  margin: auto;
+  margin-top: 20px;
+  position: relative;
+  text-align: center;
+  background-image: url("../imgs/scenery-background3.jpg");
+  background-size: 180px auto;
+}
+
+.pokemon-image {
+  position: relative;
+  width: 96px;
+}
+
+.type-image {
+  width: 25px;
+  height: 25px;
+}
+
+/* ------------------------ */
 
 /* --- Screen size specifications --- */
 
