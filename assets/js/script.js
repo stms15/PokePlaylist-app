@@ -143,7 +143,7 @@ searchFormEl.appendChild(searchLabelEl);
 searchFormEl.appendChild(searchInputEl);
 searchFormEl.appendChild(searchButtonEl);
 containerEl.appendChild(searchFormEl);
-containerEl.appendChild(titleEl);
+
 containerEl.appendChild(dataEl);
 
 // Search function
@@ -183,28 +183,106 @@ function readData(data) {
     dataEl.textContent = "No results found.";
     return;
   }
+
+  // Create HTML for the info card
+  var cardEl = document.createElement("div");
+  cardEl.id = "text-card";
+  cardEl.classList.add("card");
+  cardEl.classList.add("pokemon-card");
+  cardEl.classList.add("m-3");
+  cardEl.classList.add("shadow-lg");
+  cardEl.style = "background-color: var(--lightfire)";
+
+  var cardImageContainer = document.createElement("div");
+  cardImageContainer.classList.add("image-container");
+
+  var cardImage = document.createElement("img");
+
+  var cardBodyEl = document.createElement("div");
+  cardBodyEl.classList.add("card-body");
+  cardBodyEl.classList.add("text-center");
+
+  var cardNameEl = document.createElement("div");
+  cardNameEl.classList.add("d-flex");
+  cardNameEl.classList.add("justify-content-between");
+
+  var cardNameTitle = document.createElement("h5");
+  var cardNameIcon = document.createElement("img");
+
+  var cardStatsEl = document.createElement("ul");
+  var cardStatsHP = document.createElement("li");
+  var cardStatsAtk = document.createElement("li");
+  var cardStatsDef = document.createElement("li");
+  var cardStatsSpA = document.createElement("li");
+  var cardStatsSpD = document.createElement("li");
+  var cardStatsSpe = document.createElement("li");
+  var cardStatsHPSpan = document.createElement("span");
+  cardStatsHPSpan.textContent = "HP:";
+  var cardStatsAtkSpan = document.createElement("span");
+  cardStatsAtkSpan.textContent = "Attack:";
+  var cardStatsDefSpan = document.createElement("span");
+  cardStatsDefSpan.textContent = "Defense:";
+  var cardStatsSpASpan = document.createElement("span");
+  cardStatsSpASpan.textContent = "Special Attack:";
+  var cardStatsSpDSpan = document.createElement("span");
+  cardStatsSpDSpan.textContent = "Special Defense:";
+  var cardStatsSpeSpan = document.createElement("span");
+  cardStatsSpeSpan.textContent = "Speed:";
+  cardStatsHP.classList.add("d-flex");
+  cardStatsHP.classList.add("justify-content-between");
+  cardStatsAtk.classList.add("d-flex");
+  cardStatsAtk.classList.add("justify-content-between");
+  cardStatsDef.classList.add("d-flex");
+  cardStatsDef.classList.add("justify-content-between");
+  cardStatsSpA.classList.add("d-flex");
+  cardStatsSpA.classList.add("justify-content-between");
+  cardStatsSpD.classList.add("d-flex");
+  cardStatsSpD.classList.add("justify-content-between");
+  cardStatsSpe.classList.add("d-flex");
+  cardStatsSpe.classList.add("justify-content-between");
+
+  cardEl.appendChild(cardImageContainer);
+  cardImageContainer.appendChild(cardImage);
+  cardEl.appendChild(cardBodyEl);
+  cardBodyEl.appendChild(cardNameEl);
+  cardNameEl.appendChild(cardNameTitle);
+  cardNameEl.appendChild(cardNameIcon);
+  cardEl.appendChild(cardStatsEl);
+  cardStatsHP.appendChild(cardStatsHPSpan);
+  cardStatsAtk.appendChild(cardStatsAtkSpan);
+  cardStatsDef.appendChild(cardStatsDefSpan);
+  cardStatsSpA.appendChild(cardStatsSpASpan);
+  cardStatsSpD.appendChild(cardStatsSpDSpan);
+  cardStatsSpe.appendChild(cardStatsSpeSpan);
+  cardStatsEl.appendChild(cardStatsHP);
+  cardStatsEl.appendChild(cardStatsAtk);
+  cardStatsEl.appendChild(cardStatsDef);
+  cardStatsEl.appendChild(cardStatsSpA);
+  cardStatsEl.appendChild(cardStatsSpD);
+  cardStatsEl.appendChild(cardStatsSpe);
+  dataEl.appendChild(cardEl);
   
+  //
   var pokemonName = capitalizeFirstLetter(data.name);
   var pokemonTypes = data.types;
   var pokemonTypeConcat = capitalizeFirstLetter(pokemonTypes[0].type.name);
   var pokemonStats = data.stats;
-  var pokemonImageEl = document.createElement("img");
-  pokemonImageEl.src = data.sprites.front_default;
+  pokemonImageEl.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + data.id + ".png";
+  console.log(data);
 
   if (pokemonTypes.length === 2) {
     pokemonTypeConcat += "/" + capitalizeFirstLetter(pokemonTypes[1].type.name);
   }
 
-  titleEl.textContent = pokemonName;
-  dataEl.textContent = `Type: ${pokemonTypeConcat}`;
+  cardNameTitle.textContent = pokemonName;
+  //dataEl.textContent = `Type: ${pokemonTypeConcat}`;
 
-  for (var i = 0; i < pokemonStats.length; i++) {
-    var currentStat = document.createElement("div");
-    currentStat.textContent = pokemonStats[i].stat.name + ": " + pokemonStats[i].base_stat;
-    dataEl.appendChild(currentStat);
-  }
-
-  dataEl.appendChild(pokemonImageEl);
+  cardStatsHP.textContent = "HP: " + pokemonStats[0].base_stat;
+  cardStatsAtk.textContent = "Attack: " + pokemonStats[1].base_stat;
+  cardStatsDef.textContent = "Defense: " + pokemonStats[2].base_stat;
+  cardStatsSpA.textContent = "Special Attack: " + pokemonStats[3].base_stat;
+  cardStatsSpD.textContent = "Special Defense: " + pokemonStats[4].base_stat;
+  cardStatsSpe.textContent = "Speed: " + pokemonStats[5].base_stat;
 }
 
 // Source: https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
