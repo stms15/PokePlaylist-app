@@ -197,6 +197,9 @@ function readData(data) {
   cardImageContainer.classList.add("image-container");
 
   var cardImage = document.createElement("img");
+  cardImage.classList.add("pokemon-image");
+  cardImage.classList.add("mt-2");
+  cardImage.classList.add("mb-2");
 
   var cardBodyEl = document.createElement("div");
   cardBodyEl.classList.add("card-body");
@@ -216,18 +219,6 @@ function readData(data) {
   var cardStatsSpA = document.createElement("li");
   var cardStatsSpD = document.createElement("li");
   var cardStatsSpe = document.createElement("li");
-  var cardStatsHPSpan = document.createElement("span");
-  cardStatsHPSpan.textContent = "HP:";
-  var cardStatsAtkSpan = document.createElement("span");
-  cardStatsAtkSpan.textContent = "Attack:";
-  var cardStatsDefSpan = document.createElement("span");
-  cardStatsDefSpan.textContent = "Defense:";
-  var cardStatsSpASpan = document.createElement("span");
-  cardStatsSpASpan.textContent = "Special Attack:";
-  var cardStatsSpDSpan = document.createElement("span");
-  cardStatsSpDSpan.textContent = "Special Defense:";
-  var cardStatsSpeSpan = document.createElement("span");
-  cardStatsSpeSpan.textContent = "Speed:";
   cardStatsHP.classList.add("d-flex");
   cardStatsHP.classList.add("justify-content-between");
   cardStatsAtk.classList.add("d-flex");
@@ -247,13 +238,7 @@ function readData(data) {
   cardBodyEl.appendChild(cardNameEl);
   cardNameEl.appendChild(cardNameTitle);
   cardNameEl.appendChild(cardNameIcon);
-  cardEl.appendChild(cardStatsEl);
-  cardStatsHP.appendChild(cardStatsHPSpan);
-  cardStatsAtk.appendChild(cardStatsAtkSpan);
-  cardStatsDef.appendChild(cardStatsDefSpan);
-  cardStatsSpA.appendChild(cardStatsSpASpan);
-  cardStatsSpD.appendChild(cardStatsSpDSpan);
-  cardStatsSpe.appendChild(cardStatsSpeSpan);
+  cardBodyEl.appendChild(cardStatsEl);
   cardStatsEl.appendChild(cardStatsHP);
   cardStatsEl.appendChild(cardStatsAtk);
   cardStatsEl.appendChild(cardStatsDef);
@@ -262,12 +247,13 @@ function readData(data) {
   cardStatsEl.appendChild(cardStatsSpe);
   dataEl.appendChild(cardEl);
   
-  //
+  // Get Pokemon data
   var pokemonName = capitalizeFirstLetter(data.name);
   var pokemonTypes = data.types;
   var pokemonTypeConcat = capitalizeFirstLetter(pokemonTypes[0].type.name);
   var pokemonStats = data.stats;
-  pokemonImageEl.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + data.id + ".png";
+  cardImage.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + data.id + ".png";
+  console.log(cardImage.src);
   console.log(data);
 
   if (pokemonTypes.length === 2) {
@@ -288,15 +274,4 @@ function readData(data) {
 // Source: https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function getStarters() {
-  var searchUrl = "https://pokeapi.co/api/v2/pokemon/bulbasaur";
-  getPokemonDetails(searchUrl);
-
-  searchUrl = "https://pokeapi.co/api/v2/pokemon/charmander";
-  getPokemonDetails(searchUrl);
-
-  searchUrl = "https://pokeapi.co/api/v2/pokemon/squirtle";
-  getPokemonDetails(searchUrl);
 }
