@@ -117,8 +117,10 @@ function displayPlaylist(playlist) {
 }
 
 async function generatePlaylistListener() {
-  songToAdd = await searchSpotify("fire");
-  songs.push(songToAdd);
+  for (let i = 0; i < 2; i++) {
+    songToAdd = await searchSpotify("fire");
+    songs.push(songToAdd);
+  }
 
   displayPlaylist(songs);
 }
