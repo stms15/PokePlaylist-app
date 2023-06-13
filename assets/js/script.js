@@ -116,38 +116,11 @@ async function searchSpotify(query) {
 /**********************************************/
 
 // Create HTML elements
-var containerEl = document.createElement("div");
-containerEl.id = "container";
-document.body.appendChild(containerEl);
-
-var titleEl = document.createElement("h2");
-titleEl.id = "pokemon-name";
-
-var dataEl = document.createElement("div");
-dataEl.id = "pokemon-data";
-
-var searchFormEl = document.createElement("form");
-var searchLabelEl = document.createElement("label");
-var searchInputEl = document.createElement("input");
-var searchButtonEl = document.createElement("input");
-
-searchFormEl.id = "search-form";
-searchLabelEl.id = "search-label";
-searchLabelEl.textContent = "PokeAPI Search";
-searchLabelEl.for = "search-input";
-searchInputEl.id = "search-input";
-searchButtonEl.id = "search-button";
-searchButtonEl.type = "submit";
-
-searchFormEl.appendChild(searchLabelEl);
-searchFormEl.appendChild(searchInputEl);
-searchFormEl.appendChild(searchButtonEl);
-containerEl.appendChild(searchFormEl);
-
-containerEl.appendChild(dataEl);
+var searchInputEl = document.querySelector("#search-input");
+var searchButtonEl = document.querySelector("#search-button");
 
 // Search function
-searchFormEl.addEventListener("submit", function(event) {
+searchButtonEl.addEventListener("click", function(event) {
   event.preventDefault();
   
   var searchUrl = "https://pokeapi.co/api/v2/pokemon/" + searchInputEl.value.trim();
@@ -165,7 +138,7 @@ function getPokemonDetails(searchUrl) {
       }
       else if (response.status === 404) {
         titleEl.textContent = `"${searchInputEl.value}"`;
-        dataEl.textContent = "No results found.";
+        cardContainerEl.textContent = "No results found.";
       }
       else {
         console.log("Error: " + response.statusText);
@@ -179,10 +152,12 @@ function getPokemonDetails(searchUrl) {
 // Display data in HTML
 function readData(data) {
   if (!data || data.length === 0) {
-    titleEl.textContent = `"${searchInputEl.value}"`;
-    dataEl.textContent = "No results found.";
+    console.log("No data");
     return;
   }
+
+  var cardContainerEl = document.querySelector("#card-container");
+  cardContainerEl.textContent = "";
 
   // Create HTML for the info card
   var cardEl = document.createElement("div");
@@ -210,6 +185,7 @@ function readData(data) {
 
   var cardNameTitle = document.createElement("h5");
   var cardNameIcon = document.createElement("img");
+  cardNameIcon.classList.add("type-image");
 
   var cardStatsEl = document.createElement("ul");
   var cardStatsHP = document.createElement("li");
@@ -244,19 +220,19 @@ function readData(data) {
   cardStatsEl.appendChild(cardStatsSpA);
   cardStatsEl.appendChild(cardStatsSpD);
   cardStatsEl.appendChild(cardStatsSpe);
-  dataEl.appendChild(cardEl);
+  cardContainerEl.appendChild(cardEl);
   
   // Get Pokemon data
   var pokemonName = capitalizeFirstLetter(data.name);
   var pokemonTypes = data.types;
-  var pokemonTypeConcat = capitalizeFirstLetter(pokemonTypes[0].type.name);
   var pokemonStats = data.stats;
   cardImage.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + data.id + ".png";
-  console.log(cardImage.src);
-  console.log(data);
-
+  cardNameIcon.src = "./assets/imgs/" + capitalizeFirstLetter(pokemonTypes[0].type.name) + ".png";
   if (pokemonTypes.length === 2) {
-    pokemonTypeConcat += "/" + capitalizeFirstLetter(pokemonTypes[1].type.name);
+    var cardNameIcon2 = document.createElement("img");
+    cardNameIcon2.classList.add("type-image");
+    cardNameIcon2.src = "./assets/imgs/" + capitalizeFirstLetter(pokemonTypes[1].type.name) + ".png";
+    cardNameEl.appendChild(cardNameIcon2);
   }
 
   cardNameTitle.textContent = pokemonName;
