@@ -100,11 +100,27 @@ h5 {
 
 /* ------------------------ */
 
+/* ----- Playlist.html classes ----- */
+
+.album {
+  width: 200px;
+}
+
+.spotify-link {
+  text-decoration: none;
+}
+
+/* --------------------------------- */
+
 /* --- Screen size specifications --- */
 
 @media screen and (max-width: 780px) {
   #description {
     width: 100% !important;
+  }
+
+  .album {
+    width: 150px;
   }
 }
 

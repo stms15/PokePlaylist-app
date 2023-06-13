@@ -12,13 +12,27 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <!-- Link font -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <!-- Link CSS stylesheet -->
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Add Day.js script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
     <main class="d-flex justify-content-around">
-      <div class="d-flex flex-column w-25" id="pokemon-team">
+      <div
+        class="d-flex flex-column justify-content-evenly align-items-center"
+        id="pokemon-team"
+      >
         <!-- Test card 1: Charmeleon -->
         <div
           class="card pokemon-card m-3 shadow-lg"
@@ -110,97 +124,11 @@
         </div>
       </div>
       <!-- Playlist Column -->
-      <div class="d-flex flex-column w-25" id="playlist">
-        <!-- Test card 1: Charmeleon -->
-        <div
-          class="card pokemon-card m-3 shadow-lg"
-          id="test-card"
-          style="background-color: var(--fire)"
-        >
-          <div class="image-container">
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png"
-              alt="image of pokemon"
-              class="pokemon-image mt-2 mb-2"
-            />
-          </div>
-          <div class="card-body text-center">
-            <div class="d-flex justify-content-between">
-              <h5>Charmeleon</h5>
-              <img
-                src="./assets/imgs/Fire.png"
-                class="type-image"
-                alt="fire symbol"
-              />
-            </div>
-            <ul class="w-75">
-              <li class="d-flex justify-content-between">
-                <span>HP:</span> 58
-              </li>
-              <li class="d-flex justify-content-between">
-                <span>Defense:</span> 58
-              </li>
-              <li class="d-flex justify-content-between">
-                <span>Attack:</span> 64
-              </li>
-              <li class="d-flex justify-content-between">
-                <span>Sp Defense:</span> 65
-              </li>
-              <li class="d-flex justify-content-between">
-                <span>Sp Attack:</span> 80
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- Test card 2: Gengar -->
-        <div
-          class="card pokemon-card m-3 shadow-lg"
-          id="test-card"
-          style="background-color: var(--ghost)"
-        >
-          <div class="image-container">
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
-              alt="image of pokemon"
-              class="pokemon-image mt-2 mb-2"
-            />
-          </div>
-          <div class="card-body text-center">
-            <div class="d-flex justify-content-space justify-content-between">
-              <h5>Gengar</h5>
-              <span
-                ><img
-                  src="./assets/imgs/Ghost.png"
-                  class="type-image"
-                  alt="ghost type symbol"
-                />
-                <img
-                  src="./assets/imgs/Poison.png"
-                  class="type-image"
-                  alt="poison type symbol"
-                />
-              </span>
-            </div>
-            <ul class="w-75">
-              <li class="d-flex justify-content-between">
-                <span>HP:</span> 60
-              </li>
-              <li class="d-flex justify-content-between">
-                <span>Defense:</span> 60
-              </li>
-              <li class="d-flex justify-content-between">
-                <span>Attack:</span> 65
-              </li>
-              <li class="d-flex justify-content-between">
-                <span>Sp Defense:</span> 75
-              </li>
-              <li class="d-flex justify-content-between">
-                <span>Sp Attack:</span> 130
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <div
+        class="d-flex flex-column justify-content-evenly align-items-center"
+        id="playlist"
+      ></div>
     </main>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
