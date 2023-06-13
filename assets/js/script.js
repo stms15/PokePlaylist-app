@@ -191,7 +191,6 @@ function readData(data) {
   cardEl.classList.add("pokemon-card");
   cardEl.classList.add("m-3");
   cardEl.classList.add("shadow-lg");
-  cardEl.style = "background-color: var(--lightfire)";
 
   var cardImageContainer = document.createElement("div");
   cardImageContainer.classList.add("image-container");
@@ -261,6 +260,12 @@ function readData(data) {
   }
 
   cardNameTitle.textContent = pokemonName;
+  if (pokemonTypes[0].type.name === "fire" || pokemonTypes[0].type.name === "ghost") {
+    cardEl.style = "background-color: var(--light" + pokemonTypes[0].type.name + ")";
+  }
+  else {
+    cardEl.style = "background-color: var(--" + pokemonTypes[0].type.name + ")";
+  }
   //dataEl.textContent = `Type: ${pokemonTypeConcat}`;
 
   cardStatsHP.textContent = "HP: " + pokemonStats[0].base_stat;
