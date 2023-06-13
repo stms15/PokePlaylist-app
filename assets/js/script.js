@@ -281,18 +281,12 @@ function readData(data) {
   var pokemonStats = data.stats;
   cardImage.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + data.id + ".png";
   cardTypeIcon.src = "./assets/imgs/" + capitalizeFirstLetter(pokemonTypes[0].type.name) + ".png";
+  cardEl.style = "background-color: var(--" + pokemonTypes[0].type.name + ")";
   if (pokemonTypes.length === 2) {
     var cardTypeIcon2 = document.createElement("img");
     cardTypeIcon2.classList.add("type-image");
     cardTypeIcon2.src = "./assets/imgs/" + capitalizeFirstLetter(pokemonTypes[1].type.name) + ".png";
     cardTypeSpan.appendChild(cardTypeIcon2);
-  }
-
-  if (pokemonTypes[0].type.name === "fire" || pokemonTypes[0].type.name === "ghost") {
-    cardEl.style = "background-color: var(--light" + pokemonTypes[0].type.name + ")";
-  }
-  else {
-    cardEl.style = "background-color: var(--" + pokemonTypes[0].type.name + ")";
   }
 
   cardStatsHP.textContent = "HP: " + pokemonStats[0].base_stat;
