@@ -115,11 +115,11 @@ async function searchSpotify(query) {
 /*        ------ PokeAPI Search ------        */
 /**********************************************/
 
-// Create HTML elements
+// Get HTML search elements
 var searchInputEl = document.querySelector("#search-input");
 var searchButtonEl = document.querySelector("#search-button");
 
-// Search function
+// Search button function
 searchButtonEl.addEventListener("click", function(event) {
   event.preventDefault();
   var searchPokemon = searchInputEl.value.trim();
@@ -226,6 +226,7 @@ function readData(data) {
   
   // Get Pokemon data
   var pokemonName = capitalizeFirstLetter(data.name);
+  cardNameTitle.textContent = pokemonName;
   var pokemonTypes = data.types;
   var pokemonStats = data.stats;
   cardImage.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + data.id + ".png";
@@ -237,14 +238,12 @@ function readData(data) {
     cardTypeSpan.appendChild(cardTypeIcon2);
   }
 
-  cardNameTitle.textContent = pokemonName;
   if (pokemonTypes[0].type.name === "fire" || pokemonTypes[0].type.name === "ghost") {
     cardEl.style = "background-color: var(--light" + pokemonTypes[0].type.name + ")";
   }
   else {
     cardEl.style = "background-color: var(--" + pokemonTypes[0].type.name + ")";
   }
-  //dataEl.textContent = `Type: ${pokemonTypeConcat}`;
 
   cardStatsHP.textContent = "HP: " + pokemonStats[0].base_stat;
   cardStatsAtk.textContent = "Attack: " + pokemonStats[1].base_stat;
