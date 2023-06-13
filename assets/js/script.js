@@ -184,8 +184,9 @@ function readData(data) {
   cardNameEl.classList.add("justify-content-between");
 
   var cardNameTitle = document.createElement("h5");
-  var cardNameIcon = document.createElement("img");
-  cardNameIcon.classList.add("type-image");
+  var cardTypeSpan = document.createElement("span");
+  var cardTypeIcon = document.createElement("img");
+  cardTypeIcon.classList.add("type-image");
 
   var cardStatsEl = document.createElement("ul");
   var cardStatsHP = document.createElement("li");
@@ -212,7 +213,8 @@ function readData(data) {
   cardEl.appendChild(cardBodyEl);
   cardBodyEl.appendChild(cardNameEl);
   cardNameEl.appendChild(cardNameTitle);
-  cardNameEl.appendChild(cardNameIcon);
+  cardNameEl.append(cardTypeSpan);
+  cardTypeSpan.appendChild(cardTypeIcon);
   cardBodyEl.appendChild(cardStatsEl);
   cardStatsEl.appendChild(cardStatsHP);
   cardStatsEl.appendChild(cardStatsAtk);
@@ -227,12 +229,12 @@ function readData(data) {
   var pokemonTypes = data.types;
   var pokemonStats = data.stats;
   cardImage.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + data.id + ".png";
-  cardNameIcon.src = "./assets/imgs/" + capitalizeFirstLetter(pokemonTypes[0].type.name) + ".png";
+  cardTypeIcon.src = "./assets/imgs/" + capitalizeFirstLetter(pokemonTypes[0].type.name) + ".png";
   if (pokemonTypes.length === 2) {
-    var cardNameIcon2 = document.createElement("img");
-    cardNameIcon2.classList.add("type-image");
-    cardNameIcon2.src = "./assets/imgs/" + capitalizeFirstLetter(pokemonTypes[1].type.name) + ".png";
-    cardNameEl.appendChild(cardNameIcon2);
+    var cardTypeIcon2 = document.createElement("img");
+    cardTypeIcon2.classList.add("type-image");
+    cardTypeIcon2.src = "./assets/imgs/" + capitalizeFirstLetter(pokemonTypes[1].type.name) + ".png";
+    cardTypeSpan.appendChild(cardTypeIcon2);
   }
 
   cardNameTitle.textContent = pokemonName;
