@@ -122,8 +122,9 @@ var searchButtonEl = document.querySelector("#search-button");
 // Search function
 searchButtonEl.addEventListener("click", function(event) {
   event.preventDefault();
-  
-  var searchUrl = "https://pokeapi.co/api/v2/pokemon/" + searchInputEl.value.trim();
+  var searchPokemon = searchInputEl.value.trim();
+  searchPokemon = searchPokemon.toLowerCase();
+  var searchUrl = "https://pokeapi.co/api/v2/pokemon/" + searchPokemon;
   getPokemonDetails(searchUrl);
 })
 
@@ -137,7 +138,6 @@ function getPokemonDetails(searchUrl) {
         })
       }
       else if (response.status === 404) {
-        titleEl.textContent = `"${searchInputEl.value}"`;
         cardContainerEl.textContent = "No results found.";
       }
       else {
@@ -213,7 +213,7 @@ function readData(data) {
   cardEl.appendChild(cardBodyEl);
   cardBodyEl.appendChild(cardNameEl);
   cardNameEl.appendChild(cardNameTitle);
-  cardNameEl.append(cardTypeSpan);
+  cardNameEl.appendChild(cardTypeSpan);
   cardTypeSpan.appendChild(cardTypeIcon);
   cardBodyEl.appendChild(cardStatsEl);
   cardStatsEl.appendChild(cardStatsHP);
