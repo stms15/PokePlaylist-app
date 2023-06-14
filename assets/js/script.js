@@ -304,7 +304,7 @@ function capitalizeFirstLetter(string) {
 
 
 
-const teamContainer = document.getElementById("cardContainer");
+const teamContainer = document.getElementById("teamContainer");
 const cardContainer = document.getElementById("card-container");
 
 function initiateDrag() {
