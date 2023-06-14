@@ -301,3 +301,10 @@ function readData(data) {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+/*******************************************/
+/*        ------ Saving Data ------        */
+/*******************************************/
+function save(data) {
+  localStorage.setItem("teamData", JSON.stringify(data));
+}
