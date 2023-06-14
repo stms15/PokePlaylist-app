@@ -305,6 +305,10 @@ function capitalizeFirstLetter(string) {
 
 
 const teamContainer = document.getElementById("cardContainer");
-const cardContainer = document.getElementById("cardContainer");
+const cardContainer = document.getElementById("card-container");
 
+function initiateDrag() {
 dragula([teamContainer, cardContainer]);
+}
+
+window.addEventListener("load", initiateDrag);
