@@ -173,7 +173,6 @@
     >
       View Pokemon team
     </button>
-
     <div
       class="offcanvas offcanvas-start"
       data-bs-scroll="true"
@@ -195,13 +194,17 @@
           aria-label="Close"
         ></button>
       </div>
-      <div id="teamContainer" class="offcanvas-body h-100">
+      <div id="teamContainer" class="offcanvas-body h-100"></div>
+      <div class="input-group flex-row">
         <button
-          class="btn btn-success position-absolute bottom-0 start-0 w-100"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasScrolling"
-          aria-controls="offcanvasScrolling"
+          class="btn input-group-text w-50 bg-danger text-white"
+          id="reset-button"
+        >
+          Clear
+        </button>
+        <button
+          class="btn input-group-text w-50 bg-success text-white"
+          id="generate-PokePlaylist"
         >
           Generate PokePlaylist
         </button>
