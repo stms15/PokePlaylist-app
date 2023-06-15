@@ -54,8 +54,8 @@
     </header>
 
     <!-- Search bar and *maybe filters* -->
-    <nav class="ms-5 mb-4 input-group w-50">
-      <form class="input-group">
+    <nav class="input-group w-50 position-relative search-bar">
+      <form class="input-group position-absolute start-50">
         <input
           type="search"
           id="search-input"
@@ -64,7 +64,7 @@
         />
         <button
           id="search-button"
-          class="input-group-append d-inline btn btn-dark"
+          class="input-group-append d-inline btn btn-dark text-warning"
         >
           Search
         </button>
@@ -165,7 +165,7 @@
 
     <!--offcanvas sidebar-->
     <button
-      class="btn btn-dark position-absolute top-0 start-0"
+      class="btn btn-dark text-warning position-absolute top-0 start-0"
       type="button"
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasScrolling"
