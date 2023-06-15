@@ -301,3 +301,14 @@ function readData(data) {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+
+
+const teamContainer = document.getElementById("teamContainer");
+const cardContainer = document.getElementById("card-container");
+
+function initiateDrag() {
+dragula([teamContainer, cardContainer]);
+}
+
+window.addEventListener("load", initiateDrag);
