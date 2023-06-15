@@ -165,9 +165,10 @@ generatePlaylistListener();
 /*        ------ PokeAPI Search ------        */
 /**********************************************/
 
-// Get HTML search elements
+// Get HTML elements
 var searchInputEl = document.querySelector("#search-input");
 var searchButtonEl = document.querySelector("#search-button");
+var cardContainerEl = document.querySelector("#card-container");
 
 // Search button function
 searchButtonEl.addEventListener("click", function(event) {
@@ -205,8 +206,6 @@ function readData(data) {
     console.log("No data");
     return;
   }
-
-  var cardContainerEl = document.querySelector("#card-container");
   cardContainerEl.textContent = "";
 
   // Create HTML for the info card
@@ -301,15 +300,6 @@ function readData(data) {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-/*******************************************/
-/*        ------ Saving Data ------        */
-/*******************************************/
-function save(data) {
-  localStorage.setItem("teamData", JSON.stringify(data));
-}
-
-
 const teamContainer = document.getElementById("teamContainer");
 const cardContainer = document.getElementById("card-container");
 
@@ -318,3 +308,40 @@ dragula([teamContainer, cardContainer]);
 }
 
 window.addEventListener("load", initiateDrag);
+
+
+/*******************************************/
+/*  ------ Saving and Loading Data ------  */
+/*******************************************/
+function save(data) {
+  localStorage.setItem("teamData", JSON.stringify(data));
+}
+
+function load() {
+  if (localStorage.getItem("teamData")) {
+    var data = JSON.parse(localStorage.getItem("teamData"));
+    console.log(data);
+  }
+}
+
+document.getElementById("generatePlaylist").addEventListener("click", function() {
+  var team = ["", "", "", "", "", ""];
+
+  for (var i = 1; i < teamContainer.childNodes.length-2; i++) {
+    team[i-1] = teamContainer.childNodes[i].children[1].children[0].children[0].textContent.toLowerCase();
+  }
+
+  var data = {
+    "teamName" : document.getElementById("teamName").value.trim(),
+    "pokemon1" : team[0],
+    "pokemon2" : team[1],
+    "pokemon3" : team[2],
+    "pokemon4" : team[3],
+    "pokemon5" : team[4],
+    "pokemon6" : team[5]
+  }
+
+  save(data);
+})
+
+load();
