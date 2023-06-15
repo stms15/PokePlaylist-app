@@ -308,3 +308,13 @@ function capitalizeFirstLetter(string) {
 function save(data) {
   localStorage.setItem("teamData", JSON.stringify(data));
 }
+
+
+const teamContainer = document.getElementById("teamContainer");
+const cardContainer = document.getElementById("card-container");
+
+function initiateDrag() {
+dragula([teamContainer, cardContainer]);
+}
+
+window.addEventListener("load", initiateDrag);
