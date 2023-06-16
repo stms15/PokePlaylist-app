@@ -12,8 +12,16 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <!-- Add Day.js script -->
     <script
@@ -46,10 +54,20 @@
     </header>
 
     <!-- Search bar and *maybe filters* -->
-    <nav class="ms-5 mb-4">
-      <form>
-        <input type="search" id="search-input" placeholder="Pikachu" />
-        <button id="search-button">Search</button>
+    <nav class="input-group w-50 position-relative search-bar">
+      <form class="input-group position-absolute start-50">
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Pikachu"
+          class="d-inline form-control"
+        />
+        <button
+          id="search-button"
+          class="input-group-append d-inline btn btn-dark text-warning"
+        >
+          Search
+        </button>
       </form>
     </nav>
 
@@ -144,17 +162,7 @@
         </div>
       </div>
     </div>
-  
-  <!--offcanvas sidebar-->
-  <button
-  class="btn btn-dark position-absolute top-0 start-0"
-  type="button"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#offcanvasScrolling"
-  aria-controls="offcanvasScrolling"
->
-  View Pokemon team
-</button>
+
 
 <div
   class="offcanvas offcanvas-start"
@@ -171,32 +179,58 @@
         <input type="text" id="teamName" aria-label="TeamName" class="form-control">
     </h5>
     <button
+      class="btn btn-dark text-warning position-absolute top-0 start-0 m-1"
       type="button"
-      class="btn-close"
-      data-bs-dismiss="offcanvas"
-      aria-label="Close"
-    ></button>
-  </div>
-  <div id="teamContainer" class="offcanvas-body h-100">
- 
-    
-        
-          
-    <button
-  class="btn btn-dark position-absolute bottom-0 start-0 w-100"
-  type="button"
-  id="generatePlaylist"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#offcanvasScrolling"
-  aria-controls="offcanvasScrolling"
-  style="z-index: 1;"
->
-  Generate PokePlaylist
-</button>
-  </div>
-</div>
-  <script src="./assets/js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.js"></script>
-</body>
-  </html>
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasScrolling"
+      aria-controls="offcanvasScrolling"
+    >
+      View Pokemon team
+    </button>
+    <div
+      class="offcanvas offcanvas-start"
+      data-bs-scroll="true"
+      data-bs-backdrop="false"
+      tabindex="-1"
+      id="offcanvasScrolling"
+      aria-labelledby="offcanvasScrollingLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel"></h5>
+        <div class="input-group">
+          <span class="input-group-text text-warning bg-dark">Team name: </span>
+          <input type="text" aria-label="TeamName" class="form-control" />
+        </div>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div id="teamContainer" class="offcanvas-body h-100"></div>
+      <div class="input-group flex-row">
+        <button
+          class="btn input-group-text w-50 bg-danger text-white"
+          id="reset-button"
+        >
+          Clear
+        </button>
+        <button
+          class="btn input-group-text w-50 bg-success text-white"
+          id="generate-PokePlaylist"
+          style="z-index: 1;"
+        >
+          Generate PokePlaylist
+        </button>
+      </div>
+    </div>
+    <script src="./assets/js/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.js"></script>
+  </body>
+</html>
