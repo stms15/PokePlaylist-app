@@ -176,16 +176,22 @@ searchButtonEl.addEventListener("click", function(event) {
   var searchPokemon = searchInputEl.value.trim();
   searchPokemon = searchPokemon.toLowerCase();
   var searchUrl = "https://pokeapi.co/api/v2/pokemon/" + searchPokemon;
-  getPokemonDetails(searchUrl);
+  getPokemonDetails(searchUrl, true);
 })
 
 // Fetch data from URL
-function getPokemonDetails(searchUrl) {
+function getPokemonDetails(searchUrl, displaySearch) {
   fetch (searchUrl)
     .then (function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-            readData(data);
+          // If data is being loaded, run a different function
+          if (displaySearch) {
+            showPokemonCard(readData(data));
+          }
+          else {
+            loadPokemonCard(readData(data));
+          }
         })
       }
       else if (response.status === 404) {
@@ -271,10 +277,11 @@ function readData(data) {
   cardStatsEl.appendChild(cardStatsSpA);
   cardStatsEl.appendChild(cardStatsSpD);
   cardStatsEl.appendChild(cardStatsSpe);
-  cardContainerEl.appendChild(cardEl);
+  //cardContainerEl.appendChild(cardEl);
   
   // Get Pokemon data
   var pokemonName = capitalizeFirstLetter(data.name);
+  cardEl.data = data.name;
   cardNameTitle.textContent = pokemonName;
   var pokemonTypes = data.types;
   var pokemonStats = data.stats;
@@ -294,6 +301,16 @@ function readData(data) {
   cardStatsSpA.textContent = "Special Attack: " + pokemonStats[3].base_stat;
   cardStatsSpD.textContent = "Special Defense: " + pokemonStats[4].base_stat;
   cardStatsSpe.textContent = "Speed: " + pokemonStats[5].base_stat;
+
+  return cardEl;
+}
+
+function showPokemonCard(card) {
+  cardContainerEl.appendChild(card);
+}
+
+function loadPokemonCard(card) {
+  document.getElementById("teamContainer").appendChild(card);
 }
 
 // Source: https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
@@ -320,17 +337,41 @@ function save(data) {
 function load() {
   if (localStorage.getItem("teamData")) {
     var data = JSON.parse(localStorage.getItem("teamData"));
-    console.log(data);
+    if (data.teamName !== "") {
+      document.getElementById("teamName").value = data.teamName;
+    }
+    if (data.pokemon1 !== "") {
+      getPokemonDetails("https://pokeapi.co/api/v2/pokemon/" + data.pokemon1, false);
+    };
+    if (data.pokemon2 !== "") {
+      getPokemonDetails("https://pokeapi.co/api/v2/pokemon/" + data.pokemon2, false);
+    };
+    if (data.pokemon3 !== "") {
+      getPokemonDetails("https://pokeapi.co/api/v2/pokemon/" + data.pokemon3, false);
+    };
+    if (data.pokemon4 !== "") {
+      getPokemonDetails("https://pokeapi.co/api/v2/pokemon/" + data.pokemon4, false);
+    };
+    if (data.pokemon5 !== "") {
+      getPokemonDetails("https://pokeapi.co/api/v2/pokemon/" + data.pokemon5, false);
+    };
+    if (data.pokemon6 !== "") {
+      getPokemonDetails("https://pokeapi.co/api/v2/pokemon/" + data.pokemon6, false);
+    };
   }
 }
 
 document.getElementById("generatePlaylist").addEventListener("click", function() {
   var team = ["", "", "", "", "", ""];
-
-  for (var i = 1; i < teamContainer.childNodes.length-2; i++) {
-    team[i-1] = teamContainer.childNodes[i].children[1].children[0].children[0].textContent.toLowerCase();
+  
+  var currentPokemon = 0;
+  for (var i = 0; i < teamContainer.childNodes.length; i++) {
+    if (teamContainer.childNodes[i].data !== undefined && teamContainer.childNodes[i].data.trim() !== "") {
+      team[currentPokemon] = teamContainer.childNodes[i].data;
+      currentPokemon++;
+    }
   }
-
+  
   var data = {
     "teamName" : document.getElementById("teamName").value.trim(),
     "pokemon1" : team[0],
@@ -339,7 +380,7 @@ document.getElementById("generatePlaylist").addEventListener("click", function()
     "pokemon4" : team[3],
     "pokemon5" : team[4],
     "pokemon6" : team[5]
-  }
+  };
 
   save(data);
 })
