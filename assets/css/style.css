@@ -40,6 +40,11 @@ h1 {
   font-size: 350%;
 }
 
+h2 {
+  font-family: pokemon-solid;
+  font-size: 300%;
+}
+
 h5 {
   font-size: 140%;
 }
@@ -121,7 +126,6 @@ h5 {
 
 #back-to-main-button {
   padding: 5px;
-  font-size: 115%;
   border: solid 2px black;
   border-radius: 5px;
   transition: all 0.5s;
@@ -131,7 +135,6 @@ h5 {
 
 #back-to-main-button:hover {
   background-position: left;
-  /* animation: 0.5s right; */
 }
 /* --------------------------------- */
 
