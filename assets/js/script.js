@@ -314,3 +314,9 @@ function initiateDrag() {
 }
 
 window.addEventListener("load", initiateDrag)
+
+const resetButton = document.getElementById("reset-button")
+
+resetButton.addEventListener("click", () => {
+  teamContainer.innerHTML = ""
+})
