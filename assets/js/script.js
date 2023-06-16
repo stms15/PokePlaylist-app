@@ -277,7 +277,6 @@ function readData(data) {
   cardStatsEl.appendChild(cardStatsSpA);
   cardStatsEl.appendChild(cardStatsSpD);
   cardStatsEl.appendChild(cardStatsSpe);
-  //cardContainerEl.appendChild(cardEl);
   
   // Get Pokemon data
   var pokemonName = capitalizeFirstLetter(data.name);
@@ -371,7 +370,7 @@ document.getElementById("generatePlaylist").addEventListener("click", function()
       currentPokemon++;
     }
   }
-  
+
   var data = {
     "teamName" : document.getElementById("teamName").value.trim(),
     "pokemon1" : team[0],
