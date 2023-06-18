@@ -163,7 +163,21 @@
       </div>
     </div>
 
-    <!--offcanvas sidebar-->
+
+<div
+  class="offcanvas offcanvas-start"
+  data-bs-scroll="true"
+  data-bs-backdrop="false"
+  tabindex="-1"
+  id="offcanvasScrolling"
+  aria-labelledby="offcanvasScrollingLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
+      <div class="input-group">
+        <span class="input-group-text">Team name: </span>
+        <input type="text" id="teamName" aria-label="TeamName" class="form-control">
+    </h5>
     <button
       class="btn btn-dark text-warning position-absolute top-0 start-0 m-1"
       type="button"
@@ -205,6 +219,7 @@
         <button
           class="btn input-group-text w-50 bg-success text-white"
           id="generate-PokePlaylist"
+          style="z-index: 1;"
         >
           Generate PokePlaylist
         </button>
