@@ -91,7 +91,10 @@ function readData(data) {
   cardContainerEl.appendChild(cardEl);
 
   // Get Pokemon data
-  var pokemonName = capitalizeFirstLetter(data.name);
+  var pokemonName = capitalizeFirstLetter(data.name.split("-")[0]);
+  if (data.name === "ho-oh") {
+    pokemonName = capitalizeFirstLetter(data.name);
+  }
   cardNameTitle.textContent = pokemonName;
   var pokemonTypes = data.types;
   var pokemonStats = data.stats;
@@ -279,7 +282,7 @@ function genreMatch(typing) {
   } else if (typing === "flying") {
     return "rhythm+and+blues";
   } else if (typing === "psychic") {
-    return "dubstep";
+    return "psychedelic";
   } else if (typing === "bug") {
     return "jazz";
   } else if (typing === "rock") {
@@ -341,7 +344,6 @@ async function generatePlaylist(typesArray, speedsArray) {
   var genres = [];
   var years = [];
 
-  console.log(typesArray.length);
   for (let i = 0; i < typesArray.length; i++) {
     genres.push(genreMatch(typesArray[i]));
     years.push(matchSpeed(speedsArray[i]));
@@ -361,18 +363,6 @@ async function generatePlaylist(typesArray, speedsArray) {
 }
 
 async function loadTeam() {
-  localStorage.setItem(
-    "teamData",
-    JSON.stringify({
-      teamName: "test",
-      pokemon1: "rattata",
-      pokemon2: "raticate",
-      pokemon3: "pichu",
-      pokemon4: "pikachu",
-      pokemon5: "raichu",
-      pokemon6: "clefable",
-    })
-  );
   // Get pokemon team info from local storage
   var savedTeam = JSON.parse(localStorage.getItem("teamData"));
   var pokemonToSearch = [

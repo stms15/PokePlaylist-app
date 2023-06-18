@@ -115,6 +115,9 @@ function readData(data) {
 
   // Get Pokemon data
   var pokemonName = capitalizeFirstLetter(data.name.split("-")[0]);
+  if (data.name === "ho-oh") {
+    pokemonName = capitalizeFirstLetter(data.name);
+  }
   cardEl.data = data.name;
   cardNameTitle.textContent = pokemonName;
   var pokemonTypes = data.types;
@@ -224,7 +227,7 @@ function load() {
 }
 
 document
-  .getElementById("generatePlaylist")
+  .getElementById("generate-PokePlaylist")
   .addEventListener("click", function () {
     var team = ["", "", "", "", "", ""];
 
@@ -250,6 +253,8 @@ document
     };
 
     save(data);
+
+    location.href = "./playlist.html";
   });
 
 load();
@@ -258,17 +263,6 @@ const resetButton = document.getElementById("reset-button");
 
 resetButton.addEventListener("click", () => {
   teamContainer.innerHTML = "";
-});
-
-// ------------------------------ //
-//        Generate Playlist       //
-//         button listener        //
-// ------------------------------ //
-
-var generateBttnEl = document.getElementById("generate-PokePlaylist");
-
-generateBttnEl.addEventListener("click", function (event) {
-  location.href = "./playlist.html";
 });
 
 // ------------------------------ //
