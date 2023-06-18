@@ -269,7 +269,7 @@ function genreMatch(typing) {
   } else if (typing === "normal") {
     return "pop";
   } else if (typing === "electric") {
-    return "electronic";
+    return "EDM";
   } else if (typing === "fighting") {
     return "alternative+rock";
   } else if (typing === "poison") {
@@ -289,11 +289,11 @@ function genreMatch(typing) {
   } else if (typing === "dark") {
     return "punk";
   } else if (typing === "dragon") {
-    return "k-pop";
+    return "classical";
   } else if (typing === "steel") {
     return "heavy+metal";
   } else if (typing === "fairy") {
-    return "bubblegum+pop";
+    return "dance-pop";
   } else {
     console.log("Invalid type");
     return typing;
@@ -362,7 +362,7 @@ async function generatePlaylist(typesArray, speedsArray) {
 
 async function loadTeam() {
   localStorage.setItem(
-    "team-data",
+    "teamData",
     JSON.stringify({
       teamName: "test",
       pokemon1: "rattata",
@@ -370,11 +370,11 @@ async function loadTeam() {
       pokemon3: "pichu",
       pokemon4: "pikachu",
       pokemon5: "raichu",
-      pokemon6: "",
+      pokemon6: "clefable",
     })
   );
   // Get pokemon team info from local storage
-  var savedTeam = JSON.parse(localStorage.getItem("team-data"));
+  var savedTeam = JSON.parse(localStorage.getItem("teamData"));
   var pokemonToSearch = [
     savedTeam.pokemon1,
     savedTeam.pokemon2,

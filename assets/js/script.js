@@ -114,7 +114,7 @@ function readData(data) {
   cardStatsEl.appendChild(cardStatsSpe);
 
   // Get Pokemon data
-  var pokemonName = capitalizeFirstLetter(data.name);
+  var pokemonName = capitalizeFirstLetter(data.name.split("-")[0]);
   cardEl.data = data.name;
   cardNameTitle.textContent = pokemonName;
   var pokemonTypes = data.types;
@@ -258,4 +258,59 @@ const resetButton = document.getElementById("reset-button");
 
 resetButton.addEventListener("click", () => {
   teamContainer.innerHTML = "";
+});
+
+// ------------------------------ //
+//        Generate Playlist       //
+//         button listener        //
+// ------------------------------ //
+
+var generateBttnEl = document.getElementById("generate-PokePlaylist");
+
+generateBttnEl.addEventListener("click", function (event) {
+  location.href = "./playlist.html";
+});
+
+// ------------------------------ //
+//       JQuery Autocomplete      //
+//        for Pokemon names       //
+// ------------------------------ //
+
+$(function () {
+  var pokemonNamesURL = "https://pokeapi.co/api/v2/pokemon/?limit=1281";
+
+  fetch(pokemonNamesURL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var pokemonNames = [];
+      for (let result of data.results) {
+        pokemonNames.push(result.name);
+      }
+
+      $(".basicAutoComplete").autocomplete({
+        source: function (request, response) {
+          var filterResults = $.ui.autocomplete.filter(
+            pokemonNames,
+            request.term
+          );
+          response(
+            filterResults.sort(function (el1, el2) {
+              var searchLength = request.term.length;
+              if (
+                el1.slice(0, searchLength) === request.term &&
+                el2.slice(0, searchLength) === request.term
+              ) {
+                return 0;
+              } else if (el1.slice(0, searchLength) === request.term) {
+                return -1;
+              } else if (el2.slice(0, searchLength) === request.term) {
+                return 1;
+              }
+            })
+          );
+        },
+      });
+    });
 });

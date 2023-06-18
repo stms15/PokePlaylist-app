@@ -10,4 +10,6 @@ https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-external-link - t
 
 https://stackoverflow.com/questions/17212094/fill-background-color-left-to-right-css - left to right background fill in "Go Back" button.
 
+https://stackoverflow.com/questions/7617373/limit-results-in-jquery-ui-autocomplete - to limit the size of the autocmplete dropdown.
+
 The type icons were created in Figma using the Material Design Icons library.

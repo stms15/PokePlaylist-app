@@ -61,6 +61,12 @@ h5 {
 
 /* ---------------------- */
 
+.ui-autocomplete {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 /* ----- Card classes ----- */
 
 .pokemon-card {
@@ -109,7 +115,8 @@ h5 {
 /* ----- Playlist.html classes ----- */
 
 .song-card {
-  background-color: #dcf0f2;
+  background-color: #eddda6;
+  border: solid 1px gray;
   transition: all 0.5s;
 }
 
