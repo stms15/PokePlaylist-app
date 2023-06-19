@@ -24,9 +24,9 @@ function getPokemonDetails(searchUrl, displaySearch) {
         response.json().then(function (data) {
           // If data is being loaded, run a different function
           if (displaySearch) {
-            showPokemonCard(readData(data));
+            showPokemonCard(readData(data, displaySearch));
           } else {
-            loadPokemonCard(readData(data));
+            loadPokemonCard(readData(data, displaySearch));
           }
         });
       } else if (response.status === 404) {
@@ -41,13 +41,15 @@ function getPokemonDetails(searchUrl, displaySearch) {
 }
 
 // Display data in HTML
-function readData(data) {
+function readData(data, searching) {
   if (!data || data.length === 0) {
     console.log("No data");
     return;
   }
 
-  cardContainerEl.textContent = "";
+  if (searching) {
+    cardContainerEl.textContent = "";
+  }
 
   // Create HTML for the info card
   var cardEl = document.createElement("div");
@@ -56,6 +58,7 @@ function readData(data) {
   cardEl.classList.add("pokemon-card");
   cardEl.classList.add("m-3");
   cardEl.classList.add("shadow-lg");
+  cardEl.classList.add("m-xl-5");
 
   var cardImageContainer = document.createElement("div");
   cardImageContainer.classList.add("image-container");
@@ -118,7 +121,7 @@ function readData(data) {
   if (data.name === "ho-oh") {
     pokemonName = capitalizeFirstLetter(data.name);
   }
-  cardEl.data = data.name;
+  cardEl.id = data.name;
   cardNameTitle.textContent = pokemonName;
   var pokemonTypes = data.types;
   var pokemonStats = data.stats;
@@ -234,10 +237,10 @@ document
     var currentPokemon = 0;
     for (var i = 0; i < teamContainer.childNodes.length; i++) {
       if (
-        teamContainer.childNodes[i].data !== undefined &&
-        teamContainer.childNodes[i].data.trim() !== ""
+        teamContainer.childNodes[i].id !== undefined &&
+        teamContainer.childNodes[i].id.trim() !== ""
       ) {
-        team[currentPokemon] = teamContainer.childNodes[i].data;
+        team[currentPokemon] = teamContainer.childNodes[i].id;
         currentPokemon++;
       }
     }
