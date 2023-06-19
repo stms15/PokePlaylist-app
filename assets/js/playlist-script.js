@@ -268,7 +268,7 @@ function genreMatch(typing) {
   } else if (typing === "grass") {
     return "reggae";
   } else if (typing === "ice") {
-    return "folk";
+    return "punk-rock";
   } else if (typing === "normal") {
     return "pop";
   } else if (typing === "electric") {
@@ -276,11 +276,11 @@ function genreMatch(typing) {
   } else if (typing === "fighting") {
     return "alternative+rock";
   } else if (typing === "poison") {
-    return "funk";
+    return "hard+rock";
   } else if (typing === "ground") {
     return "country";
   } else if (typing === "flying") {
-    return "rhythm+and+blues";
+    return "acoustic";
   } else if (typing === "psychic") {
     return "psychedelic";
   } else if (typing === "bug") {
@@ -292,11 +292,11 @@ function genreMatch(typing) {
   } else if (typing === "dark") {
     return "punk";
   } else if (typing === "dragon") {
-    return "classical";
+    return "metal";
   } else if (typing === "steel") {
     return "heavy+metal";
   } else if (typing === "fairy") {
-    return "dance-pop";
+    return "bubblegum+pop";
   } else {
     console.log("Invalid type");
     return typing;
@@ -307,19 +307,19 @@ function matchSpeed(speedVal) {
   if (speedVal >= 160) {
     return "2020-2023";
   } else if (speedVal >= 140) {
-    return "2010-2019";
+    return "2015-2019";
   } else if (speedVal >= 120) {
-    return "2000-2009";
+    return "2010-2014";
   } else if (speedVal >= 100) {
-    return "1990-1999";
+    return "2005-2009";
   } else if (speedVal >= 80) {
-    return "1980-1989";
+    return "2000-2004";
   } else if (speedVal >= 60) {
-    return "1970-1979";
+    return "1995-1999";
   } else if (speedVal >= 40) {
-    return "1960-1969";
+    return "1990-1994";
   } else {
-    return "1950-1959";
+    return "1985-1989";
   }
 }
 
